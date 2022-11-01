@@ -175,7 +175,17 @@ ans - let search = document.querySelector(".searchinput___19uW0"); // storing el
 
 ![Output](./Pic15.png)
 
-ans - document.getElementById("SIvCob").textContent = "Google offered in: বাংলা  मराठी  ગુજરાતી  മലയാളം";
+ans - let val = document.getElementById("SIvCob"); // targeting the div
+val = val.getElementsByTagName('a'); // targeting  the a tag where all the language store 
+//1 3 5 7
+for (let index = 0; index < val.length; index++) {
+    if (index % 2 == 0) {
+     val[index].remove();
+    }else{
+        console.log(val[index]);
+    }
+}
+
 
 9. Webiste Name: [Code Wars](https://www.codewars.com/)
 
