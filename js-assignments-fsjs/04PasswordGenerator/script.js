@@ -16,36 +16,48 @@ const randomFunc = {
 
 clipboardEl.addEventListener('click', () => {
 
-  // Copy the text inside the text field
-  navigator.clipboard.writeText(resultEl.value);
-  
-  // Alert the copied text
-  alert("Copied the text: " + resultEl.value);
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(resultEl.value);
+
+    // Alert the copied text
+    alert("Copied the text: " + resultEl.value);
 })
 
 generateEl.addEventListener('click', () => {
-    generatePassword();
+    const length = +lengthEl.value;
+    const hasLower = lowercaseEl.checked;
+    const hasUpper = uppercaseEl.checked;
+    const hasNumber = numbersEl.checked;
+    const hasSymbol = symbolsEl.checked;
+
     resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
-})
+});
 
 function generatePassword(lower, upper, number, symbol, length) {
-    let lowerCaseStatus = lowercaseEl.checked;
-    let upperCaseStatus = uppercaseEl.checked;
-    let numberCaseStatus = numbersEl.checked;
-    let symbolCaseStatus = symbolsEl.checked;
-    // if(lowerCaseStatus && upperCaseStatus && numberCaseStatus && symbolCaseStatus){
-        
-    // }else if(lowerCaseStatus && upperCaseStatus && numberCaseStatus){
 
-    // }else if(lowerCaseStatus && upperCaseStatus ){
-        
-    // }else (lowerCaseStatus ){
-        
-    // }
 
-    
+    let generatedPassword = '';
+    const typesCount = lower + upper + number + symbol;
+    const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(item => Object.values(item)[0]);
 
-    
+    // Doesn't have a selected type
+    if (typesCount === 0) {
+        return '';
+    }
+
+    // create a loop
+    for (let i = 0; i < length; i += typesCount) {
+        typesArr.forEach(type => {
+            const funcName = Object.keys(type)[0];
+            generatedPassword += randomFunc[funcName]();
+        });
+    }
+
+    const finalPassword = generatedPassword.slice(0, length);
+
+    return finalPassword;
+
+
 }
 
 function getRandomLower() {
@@ -58,19 +70,19 @@ function getRandomLower() {
 function getRandomUpper() {
 
     let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    alphabet= alphabet[Math.floor(Math.random() * alphabet.length)];
+    alphabet = alphabet[Math.floor(Math.random() * alphabet.length)];
     return alphabet;
 }
 
 function getRandomNumber() {
     let number = "0123456789"
-    number = number[Math.floor(Math.random()*number.length)];
+    number = number[Math.floor(Math.random() * number.length)];
     return number;
 }
 
 function getRandomSymbol() {
     let symbol = '!@#$%^&*'
-     symbol = symbol[Math.floor(Math.random()*symbol.length)];
-     return symbol;
+    symbol = symbol[Math.floor(Math.random() * symbol.length)];
+    return symbol;
 }
 
