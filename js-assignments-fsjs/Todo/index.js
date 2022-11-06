@@ -8,31 +8,38 @@ let container = document.querySelector(".container");
 
 addButton.addEventListener("click", addTodo);
 function addTodo() {
-   let container = document.querySelector(".container");
-   let createLi = document.createElement("li");
-   createLi.className = "list-group";
-   createLi.appendChild(document.createTextNode(input.value));
-   createList = container.appendChild(createLi);
-   let createSpan1 = document.createElement('span');
-   createSpan1.appendChild(document.createTextNode("Edit"));
-   createSpan1.className="Edit";
-   let createSpan2 = document.createElement('span');
-   createSpan2.appendChild(document.createTextNode("Delete"));
-   createSpan2.className="Delete";
-   createList.appendChild(createSpan1);
-   createList.appendChild(createSpan2);
-   let hr = document.createElement('hr');
-   createList.appendChild(hr);
-   input.value = "";
+   if (input.value === " " || input.value === "") {
+      alert("Please enter Todo list")
+   } else {
+      let container = document.querySelector(".container");
+      let createLi = document.createElement("li");
+      createLi.className = "list-group";
+      createLi.appendChild(document.createTextNode(input.value));
+      createList = container.appendChild(createLi);
+      let editSpan = document.createElement('span');
+      editSpan.appendChild(document.createTextNode("Edit"));
+      editSpan.className = "Edit";
+      let deleteSpan = document.createElement('span');
+      deleteSpan.appendChild(document.createTextNode("Delete"));
+      deleteSpan.className = "Delete";
+      createList.appendChild(editSpan);
+      createList.appendChild(deleteSpan);
+      let hr = document.createElement('hr');
+      createList.appendChild(hr);
+      input.value = "";
+   }
+
 }
 
 
-deleteButton.addEventListener('click',deleteTodo());
-function deleteTodo(index){
-   
+deleteButton.addEventListener('click', deleteTodo());
+function deleteTodo(index) {
+
+
+
 }
 
-editButton.addEventListener('click',editTodo);
-function editTodo(){
-   
+editButton.addEventListener('click', editTodo);
+function editTodo() {
+
 }

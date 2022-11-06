@@ -47,11 +47,11 @@ convertButton.addEventListener("click", convertCase);
 
 function convertCase  (){
    
-    camelCaseOutput.innerText  = camelCase(inputText.value);
-    pascalCaseOutput.innerText = pascalCase(inputText.value);
-    snakeCaseOutput.innerText = snakeCase(inputText.value);
-    screamingSnakeCaseOutput.innerText = screamingKebabCase(inputText.value);
-    kebabCaseOutput.innerText = kebabCase(inputText.value);
-    screamingKebabCaseOutput.innerText = screamingKebabCase(inputText.value);
+    camelCaseOutput.textContent  = camelCase(inputText.value);
+    pascalCaseOutput.textContent = pascalCase(inputText.value);
+    snakeCaseOutput.textContent = snakeCase(inputText.value);
+    screamingSnakeCaseOutput.textContent = screamingKebabCase(inputText.value);
+    kebabCaseOutput.textContent = kebabCase(inputText.value);
+    screamingKebabCaseOutput.textContent = screamingKebabCase(inputText.value);
     
 }

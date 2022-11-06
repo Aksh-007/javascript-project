@@ -27,6 +27,7 @@ function showFaq() {
 }
 
 function createFaq(item) {
+
   //Faq creation outer divison
   let faq = document.createElement('div');
   // faq.className ="faq";
@@ -72,3 +73,5 @@ function btnStatusUpdate() {
 }
 
 createFaq();
+
+
